@@ -3,16 +3,29 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NewMauiApp.MainPage">
 
-    <Grid HeightRequest="100" >
-        <CollectionView ItemsLayout="HorizontalList" ItemsSource="{Binding Items}" HeightRequest="200">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Grid BackgroundColor="{Binding Color}" WidthRequest="{Binding Width}" HeightRequest="200">
-                        <Label Text="{Binding Index}" FontSize="Header" TextColor="Black"/>
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </Grid>
+
+        <Grid RowDefinitions="Auto,*,Auto,*" >
+            <Label Grid.Row="0" Text="The last cell (index 17) is  visible"/>
+            <CollectionView Grid.Row="1" ItemsLayout="HorizontalList" ItemsSource="{Binding Items}" HeightRequest="200">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid BackgroundColor="{Binding Color}" WidthRequest="{Binding Width}" HeightRequest="200">
+                            <Label Text="{Binding Index}" FontSize="Header" TextColor="Black"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Label Grid.Row="2" Text="The last cell (index 17) is not visible"/>
+            <CollectionView Grid.Row="3" ItemsLayout="HorizontalList" ItemsSource="{Binding Items2}"  ItemSizingStrategy="MeasureAllItems" HeightRequest="200">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid BackgroundColor="{Binding Color}" WidthRequest="{Binding Width}" HeightRequest="200">
+                            <Label Text="{Binding Index}" FontSize="Header" TextColor="Black"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
 
 </ContentPage>

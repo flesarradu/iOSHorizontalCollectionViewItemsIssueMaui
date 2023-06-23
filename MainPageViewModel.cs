@@ -22,13 +22,32 @@ namespace NewMauiApp
         [ObservableProperty]
         private ObservableCollection<ItemViewModel> _items;
 
+
+        [ObservableProperty]
+        private ObservableCollection<ItemViewModel> _items2;
+
         public MainPageViewModel()
         {
             _items = new ObservableCollection<ItemViewModel>();
-            for (int i = 0; i < 20; i++)
+            _items.Add(new ItemViewModel { Index = 0, Color = GetColor(0), Width = 100 });
+            for (int i = 1; i < 16; i++)
             {
-                _items.Add(new ItemViewModel { Index = i, Color = GetColor(i), Width = GetWidth(i) }) ;
+                _items.Add(new ItemViewModel { Index = i, Color = GetColor(i), Width = 50 }) ;
             }
+
+            _items.Add(new ItemViewModel { Index = 16, Color = GetColor(16 + 1), Width = 100 });
+            _items.Add(new ItemViewModel { Index = 17, Color = GetColor(17 + 1), Width = 100 });
+
+
+            _items2 = new ObservableCollection<ItemViewModel>();
+
+            _items2.Add(new ItemViewModel { Index = 0, Color = GetColor(0), Width = 50 });
+            for (int i = 1; i < 16; i++)
+            {
+                _items2.Add(new ItemViewModel { Index = i, Color = GetColor(i+1), Width = 50 });
+            }
+            _items2.Add(new ItemViewModel { Index = 16, Color = GetColor(16 + 1), Width = 100 });
+            _items2.Add(new ItemViewModel { Index = 17, Color = GetColor(17 + 1), Width = 100 });
         }
 
         private int GetWidth(int i)
